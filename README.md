@@ -4,7 +4,7 @@ Personal portfolio site for **Hassan Ahmed**, Full Stack Developer & AI/ML Engin
 A neo-brutalist, single-scroll site with a graph-paper background, floating cartoon
 mascots, and project cards pulled straight from [github.com/Hassan141998](https://github.com/Hassan141998).
 
-**Live site:** _add your Vercel URL here after deploying_
+**Live site:** https://hassan-portfolio-two-alpha.vercel.app/
 
 ![Portfolio preview](assets/preview.png)
 
