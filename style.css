@@ -132,7 +132,12 @@ nav{
 .badge-2{top:120px;right:40px;transform:rotate(-3deg);}
 @media(max-width:760px){.hero-badge-float{display:none;}}
 
-.mascot-row{display:flex;gap:16px;margin-bottom:22px;position:relative;z-index:2;}
+.mascot-row{display:flex;gap:16px;margin-bottom:10px;position:relative;z-index:2;}
+.mascot-wrap{
+  position:relative;display:inline-flex;
+  transition:transform .18s ease-out;
+  will-change:transform;
+}
 .mascot{
   width:64px;height:64px;border:3px solid var(--ink);border-radius:18px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;
@@ -153,6 +158,36 @@ nav{
   width:6px;height:6px;background:var(--ink);border-radius:50%;
 }
 .mascot:hover{animation-play-state:paused;transform:scale(1.12) rotate(-6deg);transition:transform .2s;cursor:pointer;}
+
+/* speech bubble */
+.mascot-bubble{
+  position:absolute;bottom:calc(100% + 10px);left:50%;
+  transform:translateX(-50%) translateY(6px) scale(.9);
+  background:var(--white);border:2.5px solid var(--ink);border-radius:10px;
+  padding:6px 12px;white-space:nowrap;
+  font-size:11px;font-weight:700;
+  box-shadow:3px 3px 0 var(--ink);
+  opacity:0;pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease;
+  z-index:5;
+}
+.mascot-bubble::after{
+  content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--ink);
+}
+.mascot-bubble::before{
+  content:'';position:absolute;top:calc(100% - 2.5px);left:50%;transform:translateX(-50%);
+  border:5px solid transparent;border-top-color:var(--white);z-index:1;
+}
+.mascot-wrap.bubble-show .mascot-bubble{
+  opacity:1;transform:translateX(-50%) translateY(0) scale(1);
+}
+
+.cursor-hint{
+  font-size:11px;font-weight:700;letter-spacing:.06em;color:#8a8578;
+  margin-bottom:22px;
+}
+@media(max-width:760px){.cursor-hint{display:none;}}
 
 /* flying / floating motion — each mascot & badge drifts up-down and tilts slightly */
 @keyframes fly1{

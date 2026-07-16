@@ -130,4 +130,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   highlightNav();
   toggleBackToTop();
+
+  /* ---------- Mascots: follow the cursor + show random speech bubbles ---------- */
+  const mascotRow = document.getElementById('mascotRow');
+  if (mascotRow) {
+    const wraps = Array.from(mascotRow.querySelectorAll('.mascot-wrap'));
+    const MAX_PULL = 16;      // px, how far a mascot can be tugged toward the cursor
+    const INFLUENCE = 170;    // px, radius around each mascot where the cursor has effect
+
+    function onMove(clientX, clientY){
+      wraps.forEach(wrap => {
+        const rect = wrap.getBoundingClientRect();
+        const cx = rect.left + rect.width / 2;
+        const cy = rect.top + rect.height / 2;
+        const dx = clientX - cx;
+        const dy = clientY - cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < INFLUENCE) {
+          const strength = (1 - dist / INFLUENCE) * MAX_PULL;
+          const nx = (dx / (dist || 1)) * strength;
+          const ny = (dy / (dist || 1)) * strength;
+          wrap.style.transform = `translate(${nx}px, ${ny}px)`;
+        } else {
+          wrap.style.transform = 'translate(0, 0)';
+        }
+      });
+    }
+
+    window.addEventListener('mousemove', (e) => onMove(e.clientX, e.clientY), { passive: true });
+    window.addEventListener('mouseleave', () => {
+      wraps.forEach(wrap => { wrap.style.transform = 'translate(0, 0)'; });
+    });
+
+    // Pick a random message different from whichever was shown last time.
+    function showBubble(wrap){
+      const bubble = wrap.querySelector('.mascot-bubble span');
+      const msgs = (wrap.getAttribute('data-msgs') || '').split('|').filter(Boolean);
+      if (!msgs.length) return;
+      let next = msgs[Math.floor(Math.random() * msgs.length)];
+      if (msgs.length > 1 && next === wrap.dataset.lastMsg) {
+        next = msgs[(msgs.indexOf(next) + 1) % msgs.length];
+      }
+      wrap.dataset.lastMsg = next;
+      bubble.textContent = next;
+      wrap.classList.add('bubble-show');
+    }
+    function hideBubble(wrap){
+      wrap.classList.remove('bubble-show');
+    }
+
+    wraps.forEach(wrap => {
+      wrap.addEventListener('mouseenter', () => showBubble(wrap));
+      wrap.addEventListener('mouseleave', () => hideBubble(wrap));
+      // Touch devices: tap to show a message, tap elsewhere to hide.
+      wrap.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+        showBubble(wrap);
+      }, { passive: true });
+    });
+    document.addEventListener('touchstart', () => {
+      wraps.forEach(hideBubble);
+    }, { passive: true });
+  }
 });
