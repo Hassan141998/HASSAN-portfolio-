@@ -21,11 +21,28 @@
     <div class="navlinks">
       <a href="#about">about</a>
       <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
       <a href="#projects">projects</a>
       <a href="#education">education</a>
       <a href="#contact">contact</a>
     </div>
-    <a href="#contact" class="btn btn-sm btn-yellow">Hire me →</a>
+    <div class="nav-actions">
+      <a href="resume.pdf" download class="btn btn-sm btn-outline nav-resume-btn">CV ↓</a>
+      <a href="#contact" class="btn btn-sm btn-yellow">Hire me →</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">about</a>
+    <a href="#skills">skills</a>
+    <a href="#experience">experience</a>
+    <a href="#projects">projects</a>
+    <a href="#education">education</a>
+    <a href="#contact">contact</a>
+    <a href="resume.pdf" download class="btn btn-lg btn-outline">Download CV ↓</a>
   </div>
 </nav>
 
@@ -80,6 +97,7 @@
     <div class="hero-cta">
       <a href="#projects" class="btn btn-lg btn-yellow">View Projects →</a>
       <a href="#contact" class="btn btn-lg btn-outline">Get in Touch</a>
+      <a href="resume.pdf" download class="btn btn-lg btn-dark">Download CV ↓</a>
     </div>
 
     <a href="#about" class="scroll-cue mono">SCROLL ↓</a>
@@ -88,7 +106,28 @@
 
 <main>
 
-<section id="about" class="section">
+<section class="stats-row">
+  <div class="wrap stats-grid">
+    <div class="stat-card reveal">
+      <span class="stat-num" data-count="7">0</span><span class="stat-plus">+</span>
+      <span class="stat-label mono">PROJECTS SHIPPED</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-num" data-count="15">0</span><span class="stat-plus">+</span>
+      <span class="stat-label mono">TECHNOLOGIES USED</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-num" data-count="4">0</span>
+      <span class="stat-label mono">ML MODELS DEPLOYED</span>
+    </div>
+    <div class="stat-card reveal">
+      <span class="stat-num" data-count="100" data-suffix="%">0</span>
+      <span class="stat-label mono">OPEN SOURCE</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="section reveal">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow mono">01 // ABOUT</span>
@@ -128,7 +167,7 @@
   </div>
 </section>
 
-<section id="skills" class="section section-alt">
+<section id="skills" class="section section-alt reveal">
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow mono">02 // SKILLS</span>
@@ -153,13 +192,89 @@
         <div class="pills"><span>PostgreSQL</span><span>Neon</span><span>SQLite</span><span>AWS IoT</span><span>Vercel</span><span>MQTT</span></div>
       </div>
     </div>
+
+    <div class="proficiency-block">
+      <h3 class="mono proficiency-title">Proficiency</h3>
+      <div class="bar-row">
+        <div class="bar-label"><span>Python</span><span class="mono bar-pct">90%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-pct="90" style="background:var(--yellow)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Next.js / React</span><span class="mono bar-pct">85%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-pct="85" style="background:var(--blue)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Machine Learning (scikit-learn / XGBoost)</span><span class="mono bar-pct">80%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-pct="80" style="background:var(--red)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>Backend APIs (FastAPI / Flask)</span><span class="mono bar-pct">85%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-pct="85" style="background:var(--green)"></div></div>
+      </div>
+      <div class="bar-row">
+        <div class="bar-label"><span>SQL &amp; Databases</span><span class="mono bar-pct">78%</span></div>
+        <div class="bar-track"><div class="bar-fill" data-pct="78" style="background:var(--yellow)"></div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="projects" class="section">
+<section id="experience" class="section reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">03 // PROJECTS</span>
+      <span class="eyebrow mono">03 // JOURNEY</span>
+      <h2>How I got here.</h2>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot dot-yellow"></div>
+        <div class="timeline-content">
+          <span class="mono timeline-tag">2023</span>
+          <h3>Started BSCS</h3>
+          <p>Began Computer Science at the Islamia University of Bahawalpur — first lines of Python, first "Hello World."</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-blue"></div>
+        <div class="timeline-content">
+          <span class="mono timeline-tag">2024</span>
+          <h3>Went full stack</h3>
+          <p>Picked up Next.js, React, and FastAPI — started shipping real projects instead of just coursework: attendance systems, management dashboards, and early ML experiments.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-red"></div>
+        <div class="timeline-content">
+          <span class="mono timeline-tag">2025</span>
+          <h3>Focused on applied ML</h3>
+          <p>Built and deployed InsureCalc, CardioScan, and GlucoseGuard — turning trained models into real, usable products with full front-ends.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-green"></div>
+        <div class="timeline-content">
+          <span class="mono timeline-tag">2025 — final year</span>
+          <h3>SEMS — final year project</h3>
+          <p>Designed and built a smart energy management system: IoT hardware, MQTT, ARIMA forecasting, and cloud dashboards, end to end.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot dot-yellow"></div>
+        <div class="timeline-content">
+          <span class="mono timeline-tag">Now</span>
+          <h3>Open to work</h3>
+          <p>Finishing my degree and taking on freelance &amp; full-time roles in full stack development and applied ML.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow mono">04 // PROJECTS</span>
       <h2>Featured work.</h2>
       <p class="section-sub">Pulled straight from <a href="https://github.com/Hassan141998" target="_blank" class="inline-link">github.com/Hassan141998</a></p>
     </div>
@@ -258,10 +373,10 @@
   </div>
 </section>
 
-<section id="education" class="section section-alt">
+<section id="education" class="section section-alt reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">04 // EDUCATION</span>
+      <span class="eyebrow mono">05 // EDUCATION</span>
       <h2>Background.</h2>
     </div>
     <div class="edu-card">
@@ -274,19 +389,36 @@
   </div>
 </section>
 
-<section id="contact" class="section contact-section">
+<section id="contact" class="section contact-section reveal">
   <div class="wrap">
     <div class="contact-box">
-      <span class="eyebrow mono">05 // CONTACT</span>
+      <span class="eyebrow mono">06 // CONTACT</span>
       <h2>Let's build something.</h2>
       <p>Open to freelance work and full-time roles in full stack or applied ML.</p>
-      <div class="contact-row">
-        <a href="mailto:hani141998@gmail.com" class="btn btn-lg btn-dark">hani141998@gmail.com</a>
-        <a href="https://github.com/Hassan141998" target="_blank" class="btn btn-lg btn-outline-dark">GitHub ↗</a>
-        <a href="https://www.linkedin.com/in/hassan-ahmed-98304030a/" target="_blank" class="btn btn-lg btn-outline-dark">LinkedIn ↗</a>
-        <a href="https://www.upwork.com/freelancers/~01b4e707d482637081" target="_blank" class="btn btn-lg btn-outline-dark">Upwork ↗</a>
+
+      <div class="contact-split">
+        <form class="contact-form" id="contactForm">
+          <label class="mono" for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" required placeholder="Your name">
+
+          <label class="mono" for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" required placeholder="you@example.com">
+
+          <label class="mono" for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="4" required placeholder="What are you building?"></textarea>
+
+          <button type="submit" class="btn btn-lg btn-dark full-w">Send Message →</button>
+          <p class="form-note mono" id="formNote">Opens your email app with this message pre-filled.</p>
+        </form>
+
+        <div class="contact-links-col">
+          <a href="mailto:hani141998@gmail.com" class="btn btn-lg btn-outline-dark full-w">hani141998@gmail.com</a>
+          <a href="https://github.com/Hassan141998" target="_blank" class="btn btn-lg btn-outline-dark full-w">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/hassan-ahmed-98304030a/" target="_blank" class="btn btn-lg btn-outline-dark full-w">LinkedIn ↗</a>
+          <a href="https://www.upwork.com/freelancers/~01b4e707d482637081" target="_blank" class="btn btn-lg btn-outline-dark full-w">Upwork ↗</a>
+          <p class="location mono">📍 Sadiqabad, Pakistan</p>
+        </div>
       </div>
-      <p class="location mono">📍 Sadiqabad, Pakistan</p>
     </div>
   </div>
 </section>
@@ -299,6 +431,8 @@
     <span>Built with HTML, CSS &amp; JS</span>
   </div>
 </footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
 <script src="script.js"></script>
 </body>

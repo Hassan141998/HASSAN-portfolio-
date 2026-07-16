@@ -15,7 +15,9 @@ mascots, and project cards pulled straight from [github.com/Hassan141998](https:
 - Bold neo-brutalist design — thick black borders, hard drop shadows, graph-paper grid background
 - Animated floating "cartoon" mascots in the hero section
 - Terminal-style `$ whoami` about card
-- Skills grouped by category (Languages, Frontend, Backend & ML/AI, Database & Cloud)
+- Animated stats counters (projects shipped, technologies used, etc.)
+- Skills grouped by category + animated proficiency bars
+- "Journey" timeline (2023 → now)
 - Project cards with live demo + GitHub links, pulled from real repos:
   - **InsureCalc** — medical insurance cost predictor (R² 99.3%)
   - **CardioScan** — heart attack risk prediction (AUC ~94%)
@@ -23,6 +25,11 @@ mascots, and project cards pulled straight from [github.com/Hassan141998](https:
   - **Chinook Analytics** — SQL business intelligence dashboard
   - **SEMS** — IoT smart energy management system
   - **Face Recognition Attendance** — real-time computer vision attendance system
+- Working contact form (opens the visitor's email client with the message pre-filled)
+- Downloadable resume PDF (`resume.pdf`, plus `build_resume.py` to regenerate it)
+- Mobile hamburger menu with slide-down panel
+- Scroll-reveal animations on every section
+- Back-to-top button
 - Fully responsive, no build tools or frameworks required
 - Includes a one-click Python launcher (`run.py`) for running locally in PyCharm
 
@@ -30,17 +37,21 @@ mascots, and project cards pulled straight from [github.com/Hassan141998](https:
 
 Plain **HTML5**, **CSS3**, and vanilla **JavaScript** — no frameworks, no build step.
 Fonts via Google Fonts (Archivo Black, Space Grotesk, Inter, JetBrains Mono).
+`resume.pdf` is generated with Python + reportlab (`build_resume.py`).
 
 ## 📁 Project structure
 
 ```
 .
-├── index.html      # Page structure & content
-├── style.css       # Neo-brutalist design system & animations
-├── script.js       # Active nav-link highlighting on scroll
-├── run.py          # Local dev server launcher (for PyCharm / any Python 3)
+├── index.html        # Page structure & content
+├── style.css         # Neo-brutalist design system & animations
+├── script.js         # Nav highlight, hamburger menu, scroll reveal,
+│                      # stat counters, skill bars, contact form, back-to-top
+├── run.py             # Local dev server launcher (for PyCharm / any Python 3)
+├── resume.pdf          # Downloadable CV (linked from the nav + hero)
+├── build_resume.py     # Regenerates resume.pdf — edit this to update your CV
 └── assets/
-    └── preview.png # Screenshot used above
+    └── preview.png    # Screenshot used above
 ```
 
 ## 🚀 Running locally
