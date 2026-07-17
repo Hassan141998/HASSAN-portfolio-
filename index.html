@@ -11,6 +11,18 @@
 <body>
 
 <div class="grid-bg"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="cmdk-overlay" id="cmdkOverlay">
+  <div class="cmdk-box">
+    <div class="cmdk-input-row">
+      <span class="mono cmdk-prompt">&gt;_</span>
+      <input type="text" id="cmdkInput" class="mono" placeholder="Type a command… (try 'projects', 'theme', 'email')" autocomplete="off">
+      <span class="mono cmdk-kbd">ESC</span>
+    </div>
+    <div class="cmdk-list" id="cmdkList"></div>
+  </div>
+</div>
 
 <nav>
   <div class="wrap navwrap">
@@ -27,8 +39,14 @@
       <a href="#contact">contact</a>
     </div>
     <div class="nav-actions">
+      <button class="icon-btn" id="cmdkTrigger" aria-label="Open command palette" title="Command palette (Ctrl+K)">
+        <span class="mono">⌘K</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <span id="themeIcon">🌙</span>
+      </button>
       <a href="resume.pdf" download class="btn btn-sm btn-outline nav-resume-btn">CV ↓</a>
-      <a href="#contact" class="btn btn-sm btn-yellow">Hire me →</a>
+      <a href="#contact" class="btn btn-sm btn-yellow confetti-btn">Hire me →</a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -42,6 +60,7 @@
     <a href="#projects">projects</a>
     <a href="#education">education</a>
     <a href="#contact">contact</a>
+    <button class="btn btn-lg btn-outline mobile-theme-btn" id="themeToggleMobile">Toggle dark mode 🌙</button>
     <a href="resume.pdf" download class="btn btn-lg btn-outline">Download CV ↓</a>
   </div>
 </nav>
@@ -63,6 +82,7 @@
     <div class="mascot-row" id="mascotRow">
       <div class="mascot-wrap" data-msgs="Hey there! 👋|I ❤️ clean code|Ping! 🏓|Deploying...|Catch me!|Coffee.exe running">
         <div class="mascot-bubble mono"><span></span></div>
+        <div class="achievement-badge">👑</div>
         <div class="mascot mascot-teal float-1">
           <div class="antenna"><span></span><span></span></div>
           <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
@@ -70,6 +90,7 @@
       </div>
       <div class="mascot-wrap" data-msgs="404: sleep not found|Full stack, no cap|Let's build something|npm run dream|I debug in my sleep|Hire this guy →">
         <div class="mascot-bubble mono"><span></span></div>
+        <div class="achievement-badge">👑</div>
         <div class="mascot mascot-yellow float-2">
           <div class="antenna"><span></span><span></span></div>
           <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
@@ -77,6 +98,7 @@
       </div>
       <div class="mascot-wrap" data-msgs="Model training... 87%|R² go brrr|AI + APIs = ❤️|Push to prod 🚀|Ask me about ML|Status: caffeinated">
         <div class="mascot-bubble mono"><span></span></div>
+        <div class="achievement-badge">👑</div>
         <div class="mascot mascot-blue float-3">
           <div class="antenna"><span></span><span></span></div>
           <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
@@ -84,13 +106,14 @@
       </div>
       <div class="mascot-wrap" data-msgs="Boop! 👉|Move your cursor →|You found me!|git commit -m 'hi'|Open to work 💼|Follow the cursor">
         <div class="mascot-bubble mono"><span></span></div>
+        <div class="achievement-badge">👑</div>
         <div class="mascot mascot-red float-1" style="animation-delay:-1.2s;">
           <div class="antenna"><span></span><span></span></div>
           <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
         </div>
       </div>
     </div>
-    <p class="cursor-hint mono">MOVE YOUR CURSOR →</p>
+    <p class="cursor-hint mono">MOVE, DRAG &amp; CLICK THE MASCOTS ↑</p>
     <div class="sparkle sparkle-1">✦</div>
     <div class="sparkle sparkle-2">✧</div>
     <div class="sparkle sparkle-3">✦</div>
@@ -116,6 +139,36 @@
     <a href="#about" class="scroll-cue mono">SCROLL ↓</a>
   </div>
 </header>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="mono">PYTHON</span><span class="marquee-dot">●</span>
+    <span class="mono">NEXT.JS</span><span class="marquee-dot">●</span>
+    <span class="mono">REACT</span><span class="marquee-dot">●</span>
+    <span class="mono">FASTAPI</span><span class="marquee-dot">●</span>
+    <span class="mono">SCIKIT-LEARN</span><span class="marquee-dot">●</span>
+    <span class="mono">XGBOOST</span><span class="marquee-dot">●</span>
+    <span class="mono">POSTGRESQL</span><span class="marquee-dot">●</span>
+    <span class="mono">TYPESCRIPT</span><span class="marquee-dot">●</span>
+    <span class="mono">FLASK</span><span class="marquee-dot">●</span>
+    <span class="mono">AWS IOT</span><span class="marquee-dot">●</span>
+    <span class="mono">TAILWIND</span><span class="marquee-dot">●</span>
+    <span class="mono">VERCEL</span><span class="marquee-dot">●</span>
+    <!-- duplicate for seamless loop -->
+    <span class="mono">PYTHON</span><span class="marquee-dot">●</span>
+    <span class="mono">NEXT.JS</span><span class="marquee-dot">●</span>
+    <span class="mono">REACT</span><span class="marquee-dot">●</span>
+    <span class="mono">FASTAPI</span><span class="marquee-dot">●</span>
+    <span class="mono">SCIKIT-LEARN</span><span class="marquee-dot">●</span>
+    <span class="mono">XGBOOST</span><span class="marquee-dot">●</span>
+    <span class="mono">POSTGRESQL</span><span class="marquee-dot">●</span>
+    <span class="mono">TYPESCRIPT</span><span class="marquee-dot">●</span>
+    <span class="mono">FLASK</span><span class="marquee-dot">●</span>
+    <span class="mono">AWS IOT</span><span class="marquee-dot">●</span>
+    <span class="mono">TAILWIND</span><span class="marquee-dot">●</span>
+    <span class="mono">VERCEL</span><span class="marquee-dot">●</span>
+  </div>
+</div>
 
 <main>
 
@@ -155,7 +208,7 @@
           <span class="tdot" style="background:#17B978"></span>
           <span class="mono ttitle">hassan@ahmed: ~</span>
         </div>
-        <div class="terminal-body mono">
+        <div class="terminal-body mono" id="terminalBody">
           <p><span class="prompt">$</span> whoami</p>
           <p class="out">hassan_ahmed</p>
           <p><span class="prompt">$</span> cat role.txt</p>
@@ -164,7 +217,12 @@
           <p class="out">Sadiqabad, Pakistan 🇵🇰</p>
           <p><span class="prompt">$</span> status</p>
           <p class="out accent-green">● ONLINE — open to work</p>
+          <p class="out" style="color:#7d8a95;">type 'help' and hit enter ↓</p>
         </div>
+        <form class="terminal-input-row" id="terminalForm">
+          <span class="prompt mono">$</span>
+          <input type="text" id="terminalInput" class="mono" autocomplete="off" placeholder="type a command...">
+        </form>
       </div>
 
       <div class="about-text">
@@ -175,6 +233,21 @@
           <span class="fact-pill">📍 Sadiqabad, PK</span>
           <span class="fact-pill">📧 hani141998@gmail.com</span>
         </div>
+      </div>
+    </div>
+
+    <div class="github-live-card">
+      <div class="github-live-head">
+        <h3 class="mono">🔴 LIVE FROM GITHUB</h3>
+        <span class="mono github-live-note" id="githubLiveNote">fetching…</span>
+      </div>
+      <div class="github-live-stats">
+        <div class="gh-stat"><span class="gh-stat-num" id="ghRepos">—</span><span class="mono gh-stat-label">PUBLIC REPOS</span></div>
+        <div class="gh-stat"><span class="gh-stat-num" id="ghFollowers">—</span><span class="mono gh-stat-label">FOLLOWERS</span></div>
+        <div class="gh-stat"><span class="gh-stat-num" id="ghStars">—</span><span class="mono gh-stat-label">TOTAL STARS</span></div>
+      </div>
+      <div class="github-heatmap-wrap">
+        <img src="https://ghchart.rshah.org/17B978/Hassan141998" alt="Hassan Ahmed's GitHub contribution graph" class="github-heatmap" loading="lazy">
       </div>
     </div>
   </div>
@@ -289,89 +362,19 @@
     <div class="section-head">
       <span class="eyebrow mono">04 // PROJECTS</span>
       <h2>Featured work.</h2>
-      <p class="section-sub">Pulled straight from <a href="https://github.com/Hassan141998" target="_blank" class="inline-link">github.com/Hassan141998</a></p>
+      <p class="section-sub">Pulled straight from <a href="https://github.com/Hassan141998" target="_blank" class="inline-link">github.com/Hassan141998</a> — click a card for details.</p>
     </div>
 
-    <div class="project-grid">
-
-      <article class="proj-card">
-        <div class="proj-top bar-yellow"><span class="mono">FINTECH · INSURANCE</span><span class="mono metric">R² 99.3%</span></div>
-        <div class="proj-body">
-          <h3>InsureCalc</h3>
-          <p>Medical insurance cost predictor — 4 ML models, animated regional cost maps, savings estimator.</p>
-          <div class="proj-tags mono"><span>Next.js</span><span>FastAPI</span><span>Python</span></div>
-          <div class="proj-links">
-            <a href="https://insurecalc-app.vercel.app" target="_blank" class="btn btn-xs btn-outline">Live ↗</a>
-            <a href="https://github.com/Hassan141998/InsureCalc-Medical-Insurance-Cost-Predictor" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top bar-red"><span class="mono">HEALTHCARE · CARDIOLOGY</span><span class="mono metric">AUC ~94%</span></div>
-        <div class="proj-body">
-          <h3>CardioScan</h3>
-          <p>Heart attack risk prediction — XGBoost + RF + KNN ensemble, live ECG hero, what-if simulator.</p>
-          <div class="proj-tags mono"><span>Next.js</span><span>XGBoost</span></div>
-          <div class="proj-links">
-            <a href="https://cardio-heart.vercel.app" target="_blank" class="btn btn-xs btn-outline">Live ↗</a>
-            <a href="https://github.com/Hassan141998/CardioScan-Heart-Attack-Risk-Prediction" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top bar-blue"><span class="mono">HEALTHCARE · DIABETES</span><span class="mono metric">AUC ~83%</span></div>
-        <div class="proj-body">
-          <h3>GlucoseGuard</h3>
-          <p>Diabetes risk classification — 3-model ensemble, SHAP-style explainability, PDF reports.</p>
-          <div class="proj-tags mono"><span>Next.js</span><span>scikit-learn</span></div>
-          <div class="proj-links">
-            <a href="https://glucose-guard.vercel.app" target="_blank" class="btn btn-xs btn-outline">Live ↗</a>
-            <a href="https://github.com/Hassan141998/GlucoseGuard-Diabetes-Risk-Classification" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top bar-green"><span class="mono">DATA ANALYTICS · SQL</span><span class="mono metric">7 dashboards</span></div>
-        <div class="proj-body">
-          <h3>Chinook Analytics</h3>
-          <p>End-to-end SQL BI dashboard: revenue, markets, RFM segments, forecasting.</p>
-          <div class="proj-tags mono"><span>SQL</span><span>Python</span></div>
-          <div class="proj-links">
-            <a href="https://github.com/Hassan141998" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top bar-yellow"><span class="mono">IOT · ENERGY</span><span class="mono metric">MAPE 7.4%</span></div>
-        <div class="proj-body">
-          <h3>SEMS — Smart Energy</h3>
-          <p>Final-year project: ESP32 + MQTT TLS 1.3, ARIMA forecasting, anomaly detection, LoRaWAN.</p>
-          <div class="proj-tags mono"><span>Flask</span><span>AWS IoT</span><span>ARIMA</span></div>
-          <div class="proj-links">
-            <a href="https://io-t-based-smart-energy-management.vercel.app" target="_blank" class="btn btn-xs btn-outline">Live ↗</a>
-            <a href="https://github.com/Hassan141998/IoT-Based-Smart-Energy-Management-System-SEMS-" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="proj-card">
-        <div class="proj-top bar-red"><span class="mono">COMPUTER VISION</span><span class="mono metric">Real-time</span></div>
-        <div class="proj-body">
-          <h3>Face Recognition Attendance</h3>
-          <p>Real-time detection &amp; recognition via Face-API.js — student profiles, analytics, CSV export.</p>
-          <div class="proj-tags mono"><span>Flask</span><span>PostgreSQL</span></div>
-          <div class="proj-links">
-            <a href="https://student-attendance-face-recognition.vercel.app" target="_blank" class="btn btn-xs btn-outline">Live ↗</a>
-            <a href="https://github.com/Hassan141998/student-attendance-face-recognition-system-antigra" target="_blank" class="btn btn-xs btn-outline">Code ↗</a>
-          </div>
-        </div>
-      </article>
-
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ml">ML / AI</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <button class="filter-btn" data-filter="iot">IoT</button>
+      <button class="filter-btn" data-filter="vision">Computer Vision</button>
+      <button class="filter-btn" data-filter="data">Data</button>
     </div>
+
+    <div class="project-grid" id="projectGrid"></div>
 
     <div class="more-row">
       <h3 class="mono">More on GitHub</h3>
@@ -444,6 +447,13 @@
     <span>Built with HTML, CSS &amp; JS</span>
   </div>
 </footer>
+
+<div class="modal-overlay" id="projectModalOverlay">
+  <div class="modal-box" id="projectModalBox">
+    <button class="modal-close" id="modalCloseBtn" aria-label="Close">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
 
 <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
