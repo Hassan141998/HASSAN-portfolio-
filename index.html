@@ -10,8 +10,44 @@
 </head>
 <body>
 
-<div class="grid-bg"></div>
+<div class="grid-bg" id="gridBgFallback"></div>
+<canvas id="gridCanvas" class="grid-canvas" aria-hidden="true"></canvas>
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="mascot-layer" id="mascotLayer">
+  <div class="mascot-wrap" data-msgs="Hey there! 👋|I ❤️ clean code|Ping! 🏓|Deploying...|Catch me!|Coffee.exe running">
+    <div class="mascot-bubble mono"><span></span></div>
+    <div class="achievement-badge">👑</div>
+    <div class="mascot mascot-teal float-1">
+      <div class="antenna"><span></span><span></span></div>
+      <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
+    </div>
+  </div>
+  <div class="mascot-wrap" data-msgs="404: sleep not found|Full stack, no cap|Let's build something|npm run dream|I debug in my sleep|Hire this guy →">
+    <div class="mascot-bubble mono"><span></span></div>
+    <div class="achievement-badge">👑</div>
+    <div class="mascot mascot-yellow float-2">
+      <div class="antenna"><span></span><span></span></div>
+      <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
+    </div>
+  </div>
+  <div class="mascot-wrap" data-msgs="Model training... 87%|R² go brrr|AI + APIs = ❤️|Push to prod 🚀|Ask me about ML|Status: caffeinated">
+    <div class="mascot-bubble mono"><span></span></div>
+    <div class="achievement-badge">👑</div>
+    <div class="mascot mascot-blue float-3">
+      <div class="antenna"><span></span><span></span></div>
+      <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
+    </div>
+  </div>
+  <div class="mascot-wrap" data-msgs="Boop! 👉|Move your cursor →|You found me!|git commit -m 'hi'|Open to work 💼|Follow the cursor">
+    <div class="mascot-bubble mono"><span></span></div>
+    <div class="achievement-badge">👑</div>
+    <div class="mascot mascot-red float-1" style="animation-delay:-1.2s;">
+      <div class="antenna"><span></span><span></span></div>
+      <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
+    </div>
+  </div>
+</div>
 
 <div class="cmdk-overlay" id="cmdkOverlay">
   <div class="cmdk-box">
@@ -31,12 +67,13 @@
       hassan<span class="accent-blue">@</span>ahmed<span class="accent-blue">:~$</span>
     </a>
     <div class="navlinks">
-      <a href="#about">about</a>
-      <a href="#skills">skills</a>
-      <a href="#experience">experience</a>
-      <a href="#projects">projects</a>
-      <a href="#education">education</a>
-      <a href="#contact">contact</a>
+      <a href="#about" data-i18n="nav.about">about</a>
+      <a href="#skills" data-i18n="nav.skills">skills</a>
+      <a href="#experience" data-i18n="nav.experience">experience</a>
+      <a href="#projects" data-i18n="nav.projects">projects</a>
+      <a href="#education" data-i18n="nav.education">education</a>
+      <a href="#certifications" data-i18n="nav.certifications">certifications</a>
+      <a href="#contact" data-i18n="nav.contact">contact</a>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" id="cmdkTrigger" aria-label="Open command palette" title="Command palette (Ctrl+K)">
@@ -45,8 +82,13 @@
       <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
         <span id="themeIcon">🌙</span>
       </button>
-      <a href="resume.pdf" download class="btn btn-sm btn-outline nav-resume-btn">CV ↓</a>
-      <a href="#contact" class="btn btn-sm btn-yellow confetti-btn">Hire me →</a>
+      <a href="resume.pdf" download class="btn btn-sm btn-outline nav-resume-btn" data-i18n="nav.cv">CV ↓</a>
+      <a href="#contact" class="btn btn-sm btn-yellow confetti-btn" data-i18n="nav.hire">Hire me →</a>
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="fr">FR</button>
+        <button data-lang="tr">TR</button>
+      </div>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -54,14 +96,20 @@
   </div>
 
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about">about</a>
-    <a href="#skills">skills</a>
-    <a href="#experience">experience</a>
-    <a href="#projects">projects</a>
-    <a href="#education">education</a>
-    <a href="#contact">contact</a>
-    <button class="btn btn-lg btn-outline mobile-theme-btn" id="themeToggleMobile">Toggle dark mode 🌙</button>
-    <a href="resume.pdf" download class="btn btn-lg btn-outline">Download CV ↓</a>
+    <a href="#about" data-i18n="nav.about">about</a>
+    <a href="#skills" data-i18n="nav.skills">skills</a>
+    <a href="#experience" data-i18n="nav.experience">experience</a>
+    <a href="#projects" data-i18n="nav.projects">projects</a>
+    <a href="#education" data-i18n="nav.education">education</a>
+    <a href="#certifications" data-i18n="nav.certifications">certifications</a>
+    <a href="#contact" data-i18n="nav.contact">contact</a>
+    <button class="btn btn-lg btn-outline mobile-theme-btn" id="themeToggleMobile" data-i18n="mobile.theme">Toggle dark mode 🌙</button>
+    <div class="lang-switch lang-switch-mobile" id="langSwitchMobile">
+      <button data-lang="en" class="active">EN</button>
+      <button data-lang="fr">FR</button>
+      <button data-lang="tr">TR</button>
+    </div>
+    <a href="resume.pdf" download class="btn btn-lg btn-outline" data-i18n="mobile.cv">Download CV ↓</a>
   </div>
 </nav>
 
@@ -69,7 +117,7 @@
   <div class="wrap hero-wrap">
 
     <div class="status-chip">
-      <span class="status-dot"></span> STATUS: ONLINE
+      <span class="status-dot"></span> <span data-i18n="hero.status">STATUS: ONLINE</span>
     </div>
 
     <div class="hero-badge-float badge-1 float-2">
@@ -79,64 +127,30 @@
       <span class="mono">status: shipping 🚀</span>
     </div>
 
-    <div class="mascot-row" id="mascotRow">
-      <div class="mascot-wrap" data-msgs="Hey there! 👋|I ❤️ clean code|Ping! 🏓|Deploying...|Catch me!|Coffee.exe running">
-        <div class="mascot-bubble mono"><span></span></div>
-        <div class="achievement-badge">👑</div>
-        <div class="mascot mascot-teal float-1">
-          <div class="antenna"><span></span><span></span></div>
-          <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
-        </div>
-      </div>
-      <div class="mascot-wrap" data-msgs="404: sleep not found|Full stack, no cap|Let's build something|npm run dream|I debug in my sleep|Hire this guy →">
-        <div class="mascot-bubble mono"><span></span></div>
-        <div class="achievement-badge">👑</div>
-        <div class="mascot mascot-yellow float-2">
-          <div class="antenna"><span></span><span></span></div>
-          <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
-        </div>
-      </div>
-      <div class="mascot-wrap" data-msgs="Model training... 87%|R² go brrr|AI + APIs = ❤️|Push to prod 🚀|Ask me about ML|Status: caffeinated">
-        <div class="mascot-bubble mono"><span></span></div>
-        <div class="achievement-badge">👑</div>
-        <div class="mascot mascot-blue float-3">
-          <div class="antenna"><span></span><span></span></div>
-          <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
-        </div>
-      </div>
-      <div class="mascot-wrap" data-msgs="Boop! 👉|Move your cursor →|You found me!|git commit -m 'hi'|Open to work 💼|Follow the cursor">
-        <div class="mascot-bubble mono"><span></span></div>
-        <div class="achievement-badge">👑</div>
-        <div class="mascot mascot-red float-1" style="animation-delay:-1.2s;">
-          <div class="antenna"><span></span><span></span></div>
-          <div class="mascot-eyes"><span></span><span></span></div><div class="mascot-mouth"></div>
-        </div>
-      </div>
-    </div>
-    <p class="cursor-hint mono">MOVE, DRAG &amp; CLICK THE MASCOTS ↑</p>
+    <p class="cursor-hint mono" data-i18n="hero.cursorhint">MASCOTS ARE ROAMING — TRY DRAGGING ONE ↑</p>
     <div class="sparkle sparkle-1">✦</div>
     <div class="sparkle sparkle-2">✧</div>
     <div class="sparkle sparkle-3">✦</div>
 
-    <p class="kicker mono">// FULL STACK &amp; AI/ML ENGINEER</p>
+    <p class="kicker mono" data-i18n="hero.kicker">// FULL STACK &amp; AI/ML ENGINEER</p>
 
     <h1 class="hero-title">
       HASSAN<br><span class="stroke">AHMED</span>
     </h1>
 
     <div class="role-stack">
-      <div class="role-chip chip-yellow"><span class="mono num">01</span> FULL STACK DEVELOPER</div>
-      <div class="role-chip chip-blue"><span class="mono num">02</span> AI / ML ENGINEER</div>
-      <div class="role-chip chip-red"><span class="mono num">03</span> BACKEND &amp; DATA SYSTEMS</div>
+      <div class="role-chip chip-yellow"><span class="mono num">01</span> <span data-i18n="hero.role1">FULL STACK DEVELOPER</span></div>
+      <div class="role-chip chip-blue"><span class="mono num">02</span> <span data-i18n="hero.role2">AI / ML ENGINEER</span></div>
+      <div class="role-chip chip-red"><span class="mono num">03</span> <span data-i18n="hero.role3">BACKEND &amp; DATA SYSTEMS</span></div>
     </div>
 
     <div class="hero-cta">
-      <a href="#projects" class="btn btn-lg btn-yellow">View Projects →</a>
-      <a href="#contact" class="btn btn-lg btn-outline">Get in Touch</a>
-      <a href="resume.pdf" download class="btn btn-lg btn-dark">Download CV ↓</a>
+      <a href="#projects" class="btn btn-lg btn-yellow" data-i18n="hero.ctaProjects">View Projects →</a>
+      <a href="#contact" class="btn btn-lg btn-outline" data-i18n="hero.ctaContact">Get in Touch</a>
+      <a href="resume.pdf" download class="btn btn-lg btn-dark" data-i18n="hero.ctaCv">Download CV ↓</a>
     </div>
 
-    <a href="#about" class="scroll-cue mono">SCROLL ↓</a>
+    <a href="#about" class="scroll-cue mono" data-i18n="hero.scroll">SCROLL ↓</a>
   </div>
 </header>
 
@@ -176,19 +190,19 @@
   <div class="wrap stats-grid">
     <div class="stat-card reveal">
       <span class="stat-num" data-count="7">0</span><span class="stat-plus">+</span>
-      <span class="stat-label mono">PROJECTS SHIPPED</span>
+      <span class="stat-label mono" data-i18n="stats.projects">PROJECTS SHIPPED</span>
     </div>
     <div class="stat-card reveal">
       <span class="stat-num" data-count="15">0</span><span class="stat-plus">+</span>
-      <span class="stat-label mono">TECHNOLOGIES USED</span>
+      <span class="stat-label mono" data-i18n="stats.tech">TECHNOLOGIES USED</span>
     </div>
     <div class="stat-card reveal">
       <span class="stat-num" data-count="4">0</span>
-      <span class="stat-label mono">ML MODELS DEPLOYED</span>
+      <span class="stat-label mono" data-i18n="stats.models">ML MODELS DEPLOYED</span>
     </div>
     <div class="stat-card reveal">
       <span class="stat-num" data-count="100" data-suffix="%">0</span>
-      <span class="stat-label mono">OPEN SOURCE</span>
+      <span class="stat-label mono" data-i18n="stats.opensource">OPEN SOURCE</span>
     </div>
   </div>
 </section>
@@ -196,8 +210,8 @@
 <section id="about" class="section reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">01 // ABOUT</span>
-      <h2>Who I am.</h2>
+      <span class="eyebrow mono" data-i18n="about.eyebrow">01 // ABOUT</span>
+      <h2 data-i18n="about.heading">Who I am.</h2>
     </div>
 
     <div class="about-grid">
@@ -217,17 +231,17 @@
           <p class="out">Sadiqabad, Pakistan 🇵🇰</p>
           <p><span class="prompt">$</span> status</p>
           <p class="out accent-green">● ONLINE — open to work</p>
-          <p class="out" style="color:#7d8a95;">type 'help' and hit enter ↓</p>
+          <p class="out" style="color:#7d8a95;" data-i18n="about.terminalHint">type 'help' and hit enter ↓</p>
         </div>
         <form class="terminal-input-row" id="terminalForm">
           <span class="prompt mono">$</span>
-          <input type="text" id="terminalInput" class="mono" autocomplete="off" placeholder="type a command...">
+          <input type="text" id="terminalInput" class="mono" autocomplete="off" placeholder="type a command..." data-i18n-placeholder="about.terminalPh">
         </form>
       </div>
 
       <div class="about-text">
-        <p>I'm a Full Stack Developer &amp; AI/ML Engineer finishing my BSCS at the Islamia University of Bahawalpur. Most of what I build starts as a dataset and ends as a deployed app — turning a model out of a notebook into something a real person can actually use.</p>
-        <p>Comfortable end to end: FastAPI and Flask on the backend, Next.js and React on the front, scikit-learn and XGBoost in between.</p>
+        <p data-i18n="about.p1">I'm a Full Stack Developer &amp; AI/ML Engineer finishing my BSCS at the Islamia University of Bahawalpur. Most of what I build starts as a dataset and ends as a deployed app — turning a model out of a notebook into something a real person can actually use.</p>
+        <p data-i18n="about.p2">Comfortable end to end: FastAPI and Flask on the backend, Next.js and React on the front, scikit-learn and XGBoost in between.</p>
         <div class="fact-pills">
           <span class="fact-pill">🎓 BSCS 2023–2025</span>
           <span class="fact-pill">📍 Sadiqabad, PK</span>
@@ -238,13 +252,13 @@
 
     <div class="github-live-card">
       <div class="github-live-head">
-        <h3 class="mono">🔴 LIVE FROM GITHUB</h3>
+        <h3 class="mono" data-i18n="gh.live">🔴 LIVE FROM GITHUB</h3>
         <span class="mono github-live-note" id="githubLiveNote">fetching…</span>
       </div>
       <div class="github-live-stats">
-        <div class="gh-stat"><span class="gh-stat-num" id="ghRepos">—</span><span class="mono gh-stat-label">PUBLIC REPOS</span></div>
-        <div class="gh-stat"><span class="gh-stat-num" id="ghFollowers">—</span><span class="mono gh-stat-label">FOLLOWERS</span></div>
-        <div class="gh-stat"><span class="gh-stat-num" id="ghStars">—</span><span class="mono gh-stat-label">TOTAL STARS</span></div>
+        <div class="gh-stat"><span class="gh-stat-num" id="ghRepos">—</span><span class="mono gh-stat-label" data-i18n="gh.repos">PUBLIC REPOS</span></div>
+        <div class="gh-stat"><span class="gh-stat-num" id="ghFollowers">—</span><span class="mono gh-stat-label" data-i18n="gh.followers">FOLLOWERS</span></div>
+        <div class="gh-stat"><span class="gh-stat-num" id="ghStars">—</span><span class="mono gh-stat-label" data-i18n="gh.stars">TOTAL STARS</span></div>
       </div>
       <div class="github-heatmap-wrap">
         <img src="https://ghchart.rshah.org/17B978/Hassan141998" alt="Hassan Ahmed's GitHub contribution graph" class="github-heatmap" loading="lazy">
@@ -256,31 +270,31 @@
 <section id="skills" class="section section-alt reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">02 // SKILLS</span>
-      <h2>What I build with.</h2>
+      <span class="eyebrow mono" data-i18n="skills.eyebrow">02 // SKILLS</span>
+      <h2 data-i18n="skills.heading">What I build with.</h2>
     </div>
 
     <div class="skills-grid">
       <div class="skill-card card-yellow">
-        <h3>Languages</h3>
+        <h3 data-i18n="skills.cat1">Languages</h3>
         <div class="pills"><span>Python</span><span>TypeScript</span><span>JavaScript</span><span>SQL</span><span>HTML5</span><span>CSS3</span></div>
       </div>
       <div class="skill-card card-blue">
-        <h3>Frontend</h3>
+        <h3 data-i18n="skills.cat2">Frontend</h3>
         <div class="pills"><span>Next.js</span><span>React</span><span>TailwindCSS</span><span>Recharts</span><span>Framer Motion</span></div>
       </div>
       <div class="skill-card card-red">
-        <h3>Backend &amp; ML/AI</h3>
+        <h3 data-i18n="skills.cat3">Backend &amp; ML/AI</h3>
         <div class="pills"><span>FastAPI</span><span>Flask</span><span>scikit-learn</span><span>XGBoost</span><span>Pandas</span><span>NumPy</span></div>
       </div>
       <div class="skill-card card-green">
-        <h3>Database &amp; Cloud</h3>
+        <h3 data-i18n="skills.cat4">Database &amp; Cloud</h3>
         <div class="pills"><span>PostgreSQL</span><span>Neon</span><span>SQLite</span><span>AWS IoT</span><span>Vercel</span><span>MQTT</span></div>
       </div>
     </div>
 
     <div class="proficiency-block">
-      <h3 class="mono proficiency-title">Proficiency</h3>
+      <h3 class="mono proficiency-title" data-i18n="skills.proficiency">Proficiency</h3>
       <div class="bar-row">
         <div class="bar-label"><span>Python</span><span class="mono bar-pct">90%</span></div>
         <div class="bar-track"><div class="bar-fill" data-pct="90" style="background:var(--yellow)"></div></div>
@@ -308,8 +322,8 @@
 <section id="experience" class="section reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">03 // JOURNEY</span>
-      <h2>How I got here.</h2>
+      <span class="eyebrow mono" data-i18n="exp.eyebrow">03 // JOURNEY</span>
+      <h2 data-i18n="exp.heading">How I got here.</h2>
     </div>
 
     <div class="timeline">
@@ -317,40 +331,40 @@
         <div class="timeline-dot dot-yellow"></div>
         <div class="timeline-content">
           <span class="mono timeline-tag">2023</span>
-          <h3>Started BSCS</h3>
-          <p>Began Computer Science at the Islamia University of Bahawalpur — first lines of Python, first "Hello World."</p>
+          <h3 data-i18n="exp.item1.title">Started BSCS</h3>
+          <p data-i18n="exp.item1.desc">Began Computer Science at the Islamia University of Bahawalpur — first lines of Python, first "Hello World."</p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot dot-blue"></div>
         <div class="timeline-content">
           <span class="mono timeline-tag">2024</span>
-          <h3>Went full stack</h3>
-          <p>Picked up Next.js, React, and FastAPI — started shipping real projects instead of just coursework: attendance systems, management dashboards, and early ML experiments.</p>
+          <h3 data-i18n="exp.item2.title">Went full stack</h3>
+          <p data-i18n="exp.item2.desc">Picked up Next.js, React, and FastAPI — started shipping real projects instead of just coursework: attendance systems, management dashboards, and early ML experiments.</p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot dot-red"></div>
         <div class="timeline-content">
           <span class="mono timeline-tag">2025</span>
-          <h3>Focused on applied ML</h3>
-          <p>Built and deployed InsureCalc, CardioScan, and GlucoseGuard — turning trained models into real, usable products with full front-ends.</p>
+          <h3 data-i18n="exp.item3.title">Focused on applied ML</h3>
+          <p data-i18n="exp.item3.desc">Built and deployed InsureCalc, CardioScan, and GlucoseGuard — turning trained models into real, usable products with full front-ends.</p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot dot-green"></div>
         <div class="timeline-content">
           <span class="mono timeline-tag">2025 — final year</span>
-          <h3>SEMS — final year project</h3>
-          <p>Designed and built a smart energy management system: IoT hardware, MQTT, ARIMA forecasting, and cloud dashboards, end to end.</p>
+          <h3 data-i18n="exp.item4.title">SEMS — final year project</h3>
+          <p data-i18n="exp.item4.desc">Designed and built a smart energy management system: IoT hardware, MQTT, ARIMA forecasting, and cloud dashboards, end to end.</p>
         </div>
       </div>
       <div class="timeline-item">
         <div class="timeline-dot dot-yellow"></div>
         <div class="timeline-content">
           <span class="mono timeline-tag">Now</span>
-          <h3>Open to work</h3>
-          <p>Finishing my degree and taking on freelance &amp; full-time roles in full stack development and applied ML.</p>
+          <h3 data-i18n="exp.item5.title">Open to work</h3>
+          <p data-i18n="exp.item5.desc">Finishing my degree and taking on freelance &amp; full-time roles in full stack development and applied ML.</p>
         </div>
       </div>
     </div>
@@ -360,24 +374,24 @@
 <section id="projects" class="section reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">04 // PROJECTS</span>
-      <h2>Featured work.</h2>
-      <p class="section-sub">Pulled straight from <a href="https://github.com/Hassan141998" target="_blank" class="inline-link">github.com/Hassan141998</a> — click a card for details.</p>
+      <span class="eyebrow mono" data-i18n="proj.eyebrow">04 // PROJECTS</span>
+      <h2 data-i18n="proj.heading">Featured work.</h2>
+      <p class="section-sub" data-i18n="proj.sub">Pulled straight from <a href="https://github.com/Hassan141998" target="_blank" class="inline-link">github.com/Hassan141998</a> — click a card for details.</p>
     </div>
 
     <div class="filter-row" id="filterRow">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="ml">ML / AI</button>
-      <button class="filter-btn" data-filter="web">Web</button>
-      <button class="filter-btn" data-filter="iot">IoT</button>
-      <button class="filter-btn" data-filter="vision">Computer Vision</button>
-      <button class="filter-btn" data-filter="data">Data</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="filter.all">All</button>
+      <button class="filter-btn" data-filter="ml" data-i18n="filter.ml">ML / AI</button>
+      <button class="filter-btn" data-filter="web" data-i18n="filter.web">Web</button>
+      <button class="filter-btn" data-filter="iot" data-i18n="filter.iot">IoT</button>
+      <button class="filter-btn" data-filter="vision" data-i18n="filter.vision">Computer Vision</button>
+      <button class="filter-btn" data-filter="data" data-i18n="filter.data">Data</button>
     </div>
 
     <div class="project-grid" id="projectGrid"></div>
 
     <div class="more-row">
-      <h3 class="mono">More on GitHub</h3>
+      <h3 class="mono" data-i18n="proj.more">More on GitHub</h3>
       <div class="mini-grid">
         <a href="https://github.com/Hassan141998/AI-Resume-Analyzer" target="_blank" class="mini-card">AI Resume Analyzer <span class="mono">NLP · ATS</span></a>
         <a href="https://github.com/Hassan141998/SegmentIQ-Customer-Segmentation-Intelligence-Platform" target="_blank" class="mini-card">SegmentIQ <span class="mono">Customer segmentation</span></a>
@@ -392,15 +406,63 @@
 <section id="education" class="section section-alt reveal">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow mono">05 // EDUCATION</span>
-      <h2>Background.</h2>
+      <span class="eyebrow mono" data-i18n="edu.eyebrow">05 // EDUCATION</span>
+      <h2 data-i18n="edu.heading">Background.</h2>
     </div>
     <div class="edu-card">
       <span class="edu-year mono">2023 — 2025</span>
       <div>
-        <h3>BSCS — Bachelor of Science in Computer Science</h3>
-        <p>Islamia University of Bahawalpur</p>
+        <h3 data-i18n="edu.degree">BSCS — Bachelor of Science in Computer Science</h3>
+        <p data-i18n="edu.institution">Islamia University of Bahawalpur</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="certifications" class="section reveal">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow mono" data-i18n="cert.eyebrow">06 // CERTIFICATIONS</span>
+      <h2 data-i18n="cert.heading">Verified credentials.</h2>
+    </div>
+
+    <div class="cert-grid">
+      <article class="cert-card">
+        <div class="cert-top">
+          <img src="assets/cisco-data-science-badge.png" alt="Cisco Networking Academy — Introduction to Data Science verified badge" class="cert-badge">
+          <div class="cert-top-text">
+            <span class="mono cert-issuer">CISCO NETWORKING ACADEMY</span>
+            <h3 data-i18n="cert1.title">Introduction to Data Science</h3>
+            <span class="mono cert-date">Issued Nov 25, 2025</span>
+          </div>
+        </div>
+        <ul class="cert-skills">
+          <li data-i18n="cert1.skill1">Explained the promises and challenges of data analytics</li>
+          <li data-i18n="cert1.skill2">Explained the role of data in AI and Machine Learning</li>
+          <li data-i18n="cert1.skill3">Explored career paths in data analytics</li>
+        </ul>
+        <div class="cert-links">
+          <a href="assets/cisco-data-science-certificate.pdf" target="_blank" class="btn btn-xs btn-outline" data-i18n="cert1.link">View certificate ↗</a>
+        </div>
+      </article>
+
+      <article class="cert-card">
+        <div class="cert-top">
+          <div class="cert-badge cert-badge-fallback" aria-hidden="true">
+            <span>SQL</span>
+          </div>
+          <div class="cert-top-text">
+            <span class="mono cert-issuer">UNIATHENA — ATHENA GLOBAL EDUCATION</span>
+            <h3 data-i18n="cert2.title">Diploma in SQL: Beginner to Advanced</h3>
+            <span class="mono cert-date">Issued November 2025</span>
+          </div>
+        </div>
+        <ul class="cert-skills">
+          <li data-i18n="cert2.skill1">Database fundamentals &amp; query optimization</li>
+          <li data-i18n="cert2.skill2">Joins, subqueries, stored procedures &amp; triggers</li>
+          <li data-i18n="cert2.skill3">Database design &amp; performance tuning</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
@@ -408,23 +470,23 @@
 <section id="contact" class="section contact-section reveal">
   <div class="wrap">
     <div class="contact-box">
-      <span class="eyebrow mono">06 // CONTACT</span>
-      <h2>Let's build something.</h2>
-      <p>Open to freelance work and full-time roles in full stack or applied ML.</p>
+      <span class="eyebrow mono" data-i18n="contact.eyebrow">07 // CONTACT</span>
+      <h2 data-i18n="contact.heading">Let's build something.</h2>
+      <p data-i18n="contact.sub">Open to freelance work and full-time roles in full stack or applied ML.</p>
 
       <div class="contact-split">
         <form class="contact-form" id="contactForm">
-          <label class="mono" for="cf-name">Name</label>
-          <input type="text" id="cf-name" name="name" required placeholder="Your name">
+          <label class="mono" for="cf-name" data-i18n="form.name">Name</label>
+          <input type="text" id="cf-name" name="name" required placeholder="Your name" data-i18n-placeholder="form.namePh">
 
-          <label class="mono" for="cf-email">Email</label>
-          <input type="email" id="cf-email" name="email" required placeholder="you@example.com">
+          <label class="mono" for="cf-email" data-i18n="form.email">Email</label>
+          <input type="email" id="cf-email" name="email" required placeholder="you@example.com" data-i18n-placeholder="form.emailPh">
 
-          <label class="mono" for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="4" required placeholder="What are you building?"></textarea>
+          <label class="mono" for="cf-message" data-i18n="form.message">Message</label>
+          <textarea id="cf-message" name="message" rows="4" required placeholder="What are you building?" data-i18n-placeholder="form.messagePh"></textarea>
 
-          <button type="submit" class="btn btn-lg btn-dark full-w">Send Message →</button>
-          <p class="form-note mono" id="formNote">Opens your email app with this message pre-filled.</p>
+          <button type="submit" class="btn btn-lg btn-dark full-w" data-i18n="form.send">Send Message →</button>
+          <p class="form-note mono" id="formNote" data-i18n="form.note">Opens your email app with this message pre-filled.</p>
         </form>
 
         <div class="contact-links-col">
@@ -432,7 +494,7 @@
           <a href="https://github.com/Hassan141998" target="_blank" class="btn btn-lg btn-outline-dark full-w">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/hassan-ahmed-98304030a/" target="_blank" class="btn btn-lg btn-outline-dark full-w">LinkedIn ↗</a>
           <a href="https://www.upwork.com/freelancers/~01b4e707d482637081" target="_blank" class="btn btn-lg btn-outline-dark full-w">Upwork ↗</a>
-          <p class="location mono">📍 Sadiqabad, Pakistan</p>
+          <p class="location mono" data-i18n="contact.location">📍 Sadiqabad, Pakistan</p>
         </div>
       </div>
     </div>
@@ -443,8 +505,8 @@
 
 <footer>
   <div class="wrap footer-row mono">
-    <span>© 2026 Hassan Ahmed</span>
-    <span>Built with HTML, CSS &amp; JS</span>
+    <span data-i18n="footer.copy">© 2026 Hassan Ahmed</span>
+    <span data-i18n="footer.built">Built with HTML, CSS &amp; JS</span>
   </div>
 </footer>
 
